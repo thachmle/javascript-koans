@@ -68,13 +68,16 @@ describe("About Higher Order Functions", function () {
   });
 
   it("should use range to generate an array", function() {
-      expect(_.range(3)).toEqual(FILL_ME_IN);
-      expect(_.range(1, 4)).toEqual(FILL_ME_IN);
-      expect(_.range(0, -4, -1)).toEqual(FILL_ME_IN);
+      expect(_.range(3)).toEqual([0,1,2]);
+      //don't include index 0 to 4 but 1 to 4, so start at 1
+      expect(_.range(1, 4)).toEqual([1,2,3]);
+      //negative range would have been [0,-1,-2,-3,-4] but it reduces but -1, so move back one, leaving you with [0,-1,-2,-3]
+      expect(_.range(0, -4, -1)).toEqual([0,-1,-2,-3]);
   });
 
   it("should use flatten to make nested arrays easy to work with", function() {
-      expect(_([ [1, 2], [3, 4] ]).flatten()).toEqual(FILL_ME_IN);
+    //flatten will combine everything or "flatten"
+      expect(_([ [1, 2], [3, 4] ]).flatten()).toEqual([1,2,3,4]);
   });
 
   it("should use chain() ... .value() to use multiple higher order functions", function() {
@@ -83,8 +86,8 @@ describe("About Higher Order Functions", function () {
                        .map(function(x) { return x+1 } )
                        .reduce(function (sum, x) { return sum + x })
                        .value();
-
-      expect(result).toEqual(FILL_ME_IN);
+//.chain will become chain together the elements, flatten then combines them together as [0,1,2], .map will create a new result but return by adding +1 to each of the elements, so [1,2,3], then the reduce fuction will give it a sum of 6, and then return the sum + x which is 6
+      expect(result).toEqual(6);
   });
 
 });
