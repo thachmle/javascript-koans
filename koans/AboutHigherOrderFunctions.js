@@ -10,40 +10,41 @@ describe("About Higher Order Functions", function () {
   it("should use filter to return array items that meet a criteria", function () {
     var numbers = [1,2,3];
     var odd = _(numbers).filter(function (x) { return x % 2 !== 0 });
-
-    expect(odd).toEqual(FILL_ME_IN);
-    expect(odd.length).toBe(FILL_ME_IN);
-    expect(numbers.length).toBe(FILL_ME_IN);
+//.toEqual to pull out prorperties element, in this case an array so be sure to include []
+    expect(odd).toEqual([1,3]);
+    expect(odd.length).toBe(2);
+    expect(numbers.length).toBe(3);
   });
 
   it("should use 'map' to transform each element", function () {
     var numbers = [1, 2, 3];
     var numbersPlus1 = _(numbers).map(function(x) { return x + 1 });
-
-    expect(numbersPlus1).toEqual(FILL_ME_IN);
-    expect(numbers).toEqual(FILL_ME_IN);
+/*this line is 2,3,4 because x is being added to 1, so each element is being added one time, and it is .toEqual from array so be sure to include []*/
+    expect(numbersPlus1).toEqual([2,3,4]);
+    expect(numbers).toEqual([1,2,3]);
   });
 
   it("should use 'reduce' to update the same result on each iteration", function () {
     var numbers = [1, 2, 3];
     var reduction = _(numbers).reduce(
             function(/* result from last call */ memo, /* current */ x) { return memo + x }, /* initial */ 0);
-
-    expect(reduction).toBe(FILL_ME_IN);
-    expect(numbers).toEqual(FILL_ME_IN);
+/*remember that reduction reduce everthing to one line, but in this case it actually adds all of thhem +x*/
+    expect(reduction).toBe(6);
+    expect(numbers).toEqual([1,2,3]);
   });
 
   it("should use 'forEach' for simple iteration", function () {
     var numbers = [1,2,3];
     var msg = "";
+//%2 will help to know if the number is even by 
     var isEven = function (item) {
       msg += (item % 2) === 0;
     };
 
     _(numbers).forEach(isEven);
-
-    expect(msg).toEqual(FILL_ME_IN);
-    expect(numbers).toEqual(FILL_ME_IN);
+//the msg here is defined to be in "" so the answer isn't an array
+    expect(msg).toEqual('falsetruefalse');
+    expect(numbers).toEqual([1,2,3]);
   });
 
   it("should use 'all' to test whether all items pass condition", function () {
@@ -52,8 +53,8 @@ describe("About Higher Order Functions", function () {
 
     var isEven = function(x) { return x % 2 === 0 };
 
-    expect(_(onlyEven).all(isEven)).toBe(FILL_ME_IN);
-    expect(_(mixedBag).all(isEven)).toBe(FILL_ME_IN);
+    expect(_(onlyEven).all(isEven)).toBe(true);
+    expect(_(mixedBag).all(isEven)).toBe(false);
   });
 
   it("should use 'any' to test if any items passes condition" , function () {
@@ -62,8 +63,8 @@ describe("About Higher Order Functions", function () {
 
     var isEven = function(x) { return x % 2 === 0 };
 
-    expect(_(onlyEven).any(isEven)).toBe(FILL_ME_IN);
-    expect(_(mixedBag).any(isEven)).toBe(FILL_ME_IN);
+    expect(_(onlyEven).any(isEven)).toBe(true);
+    expect(_(mixedBag).any(isEven)).toBe(true);
   });
 
   it("should use range to generate an array", function() {
