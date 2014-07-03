@@ -95,15 +95,15 @@ describe("About Objects", function () {
       var simpleCircle = new Circle(10);
       var colouredCircle = new Circle(5);
       colouredCircle.colour = "red";
-
-      expect(simpleCircle.colour).toBe(FILL_ME_IN);
-      expect(colouredCircle.colour).toBe(FILL_ME_IN);
+//the reason this is undefine because simpleCircle.colour is not define, only colourredCircle.colour
+      expect(simpleCircle.colour).toBe();
+      expect(colouredCircle.colour).toBe('red');
 
       Circle.prototype.describe = function () {
         return "This circle has a radius of: " + this.radius;
       };
 
-      expect(simpleCircle.describe()).toBe(FILL_ME_IN);
-      expect(colouredCircle.describe()).toBe(FILL_ME_IN);
+      expect(simpleCircle.describe()).toBe('This circle has a radius of: 10');
+      expect(colouredCircle.describe()).toBe('This circle has a radius of: 5');
   });
 });
