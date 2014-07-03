@@ -13,7 +13,7 @@ describe("About Objects", function () {
 
     it("should confirm that properties are case sensitive", function () {
       expect(megalomaniac.henchwoman).toBe('Harley');
-      expect(megalomaniac.henchWoman).toBe('Harley');
+      expect(megalomaniac.henchWoman).toBe();
     });
   });
 
@@ -27,9 +27,9 @@ describe("About Objects", function () {
           Array(noOfBrains + 1).join(" " + this.mastermind);
       }
     };
-
+//returning catonation with henchman and mastermind...with strings....this.master mind x4 because .battlecry has a function of this.mastermind and it requies 4 due to megalomaniac.battlecry(4)
     var battleCry = megalomaniac.battleCry(4);
-    expect(FILL_ME_IN).toMatch(battleCry);
+    expect('They are Pinky and the Brain Brain Brain Brain').toMatch(battleCry);
   });
 
   it("should confirm that when a function is attached to an object, 'this' refers to the object", function () {
@@ -44,8 +44,8 @@ describe("About Objects", function () {
       }
     };
 
-    expect(currentYear).toBe(FILL_ME_IN);
-    expect(megalomaniac.calculateAge()).toBe(FILL_ME_IN);
+    expect(currentYear).toBe(2014);
+    expect(megalomaniac.calculateAge()).toBe(44);
   });
 
   describe("'in' keyword", function () {
@@ -61,28 +61,28 @@ describe("About Objects", function () {
     it("should have the bomb", function () {
 
       var hasBomb = "theBomb" in megalomaniac;
-
-      expect(hasBomb).toBe(FILL_ME_IN);
+//calling another function on top in megalomaniac
+      expect(hasBomb).toBe(true);
     });
 
     it("should not have the detonator however", function () {
 
       var hasDetonator = "theDetonator" in megalomaniac;
 
-      expect(hasDetonator).toBe(FILL_ME_IN);
+      expect(hasDetonator).toBe(false);
     });
   });
 
   it("should know that properties can be added and deleted", function () {
     var megalomaniac = { mastermind : "Agent Smith", henchman: "Agent Smith" };
-
-    expect("secretary" in megalomaniac).toBe(FILL_ME_IN);
-
+//secretary is not define in megalomaniac so has to be false
+    expect("secretary" in megalomaniac).toBe(false);
+//define secreatary into agent smith, which is possible, so true
     megalomaniac.secretary = "Agent Smith";
-    expect("secretary" in megalomaniac).toBe(FILL_ME_IN);
+    expect("secretary" in megalomaniac).toBe(true);
 
     delete megalomaniac.henchman;
-    expect("henchman" in megalomaniac).toBe(FILL_ME_IN);
+    expect("henchman" in megalomaniac).toBe(false);
   });
 
 
